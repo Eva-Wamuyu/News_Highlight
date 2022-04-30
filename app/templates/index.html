@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block  content %}
+  
+  <div class="container">
+    {% for source in x %}
+
+    <div class="col-md-3">
+      <h3>{{source.name}}</h3>
+      <p>
+        {{source.description}}
+      </p>
+      <p>
+           {{{{source.description}}}}
+      </p>
+    </div>
+    {% endfor %}
+ 
+  </div>
+
+{% endblock %}

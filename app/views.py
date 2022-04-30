@@ -1,16 +1,20 @@
 from flask import render_template
-from main import news_app
-from models import  news_article,news_source
+from app import news_app
+from .models import  news_article,news_source
+from .requests import request_funct,process_sources
 
 @news_app.route('/')
 def index():
+  y = request_funct()
+  print(y)
+  sources = process_sources(y)
 
-  return render_template("index.html")
+  return render_template("index.html",x=sources)
 
 
 @news_app.route('/<source>')
 def source(source):
-
+  
   return render_template("articles.html")
 
 
