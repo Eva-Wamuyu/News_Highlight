@@ -6,16 +6,18 @@ from .requests import request_funct,process_sources,return_articles,process_arti
 def index():
   y = request_funct()
   sources = process_sources(y)
+  
 
   return render_template("index.html",x=sources,title="Muhtasari|Home")
 
-site = "bbc-news"
-@news_app.route('/ssss')
-def source():
+
+@news_app.route('/muhtasari/<site>')
+def source(site):
+  x = site
   articles = return_articles(site)
   them_articles = process_articles(articles)
   print(them_articles)
-  return render_template("articles.html", articles=them_articles, title=f"Muhtasari|{site}", site="bbc-news")
+  return render_template("articles.html", articles=them_articles, title=f"Muhtasari|{site}", site=site)
 
 
 @news_app.route('/top-news/<source>')

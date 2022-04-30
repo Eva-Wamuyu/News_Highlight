@@ -1,11 +1,10 @@
-from hashlib import new
 import urllib3
 import json
-from .models.news_source import  News_Source
-from .models.news_article import News_Article
+from .models import  news_source, news_article
 from app import news_app
 
-
+News_Source = news_source.News_Source
+News_Article = news_article.News_Article
 b_url = news_app.config['BASE_URL']
 search_url = news_app.config['SEARCH_URL']
 # api_key = news_app.config['API_KEY']
@@ -41,8 +40,7 @@ def process_sources(news_sources_results):
 def return_articles(source_name):
 
   http = urllib3.PoolManager()
-  resp = http.request('GET','https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=bcff76712dd94a3fb38a235f73f5bc2d')
-  # resp = http.request('GET',b_url.format(source_name,"bcff76712dd94a3fb38a235f73f5bc2d" ))
+  resp = http.request('GET',search_url.format(source_name,"bcff76712dd94a3fb38a235f73f5bc2d" ))
   articles = json.loads(resp.data.decode('utf-8'))
 
   return articles

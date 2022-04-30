@@ -1,0 +1,13 @@
+.btns{
+  background-color: #1A535C;
+  color: #FFFFFF;
+}
+.btns:hover{
+  background-color: #FFFFFF;
+  border: solid 1px #1A535C;
+  color: #1A535C;
+}
+.img img{
+  border-radius: 3px;
+  width: 100%;
+}

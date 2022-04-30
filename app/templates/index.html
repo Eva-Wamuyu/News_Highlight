@@ -3,6 +3,7 @@
 {% block  content %}
   
   <div class="container">
+    <div class="row justify-content-around">
     {% for source in x %}
 
     <div class="col-md-3">
@@ -14,9 +15,10 @@
            {{source.category}}
       </p>
     
-      <!-- <a href="{{url_for('source')}}">See Articles</a> -->
+      <a href="/muhtasari/{{source.name}}">See Articles</a>
     </div>
     {% endfor %}
+    </div>
  
   </div>
 
