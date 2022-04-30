@@ -11,3 +11,13 @@
   border-radius: 3px;
   width: 100%;
 }
+.header{
+  background-color: #55DDE0;
+
+}
+@media screen and (min-width:767px){
+  .article-col{
+    border-bottom: solid #1A535C 1px;
+  }
+
+}

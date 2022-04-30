@@ -3,22 +3,29 @@
 {% block  content %}
   
   <div class="container">
-    <div class="row justify-content-around">
+    <div class="row justify-content-around articles-row">
     {% for source in x %}
-
-    <div class="col-md-3">
+    <div class="col-sm-12 col-md-3 article-col my-2 py-2">
+      <div class="header p-2">
       <h3>{{source.name}}</h3>
+      </div>
+      <div class="div-body">
       <p>
         {{source.description}}
       </p>
       <p>
-           {{source.category}}
+         Category:{{source.category}}
       </p>
     
-      <a href="/muhtasari/{{source.name}}">See Articles</a>
+      <a class="btns btn" href="/muhtasari/{{source.name}}">See Articles <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
     </div>
+    
+    </div>
+    
     {% endfor %}
+    
     </div>
+    
  
   </div>
 
