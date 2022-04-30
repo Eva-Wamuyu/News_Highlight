@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+  <div></div>
+{% endblock %}
+
+{% block content %}
+
+<h2>
+  OOPS!
+  <br>
+  Looks like this end is closed
+</h2>
+<p>
+  <strong>
+    Don't worry, you can go home via the button below <br>
+  </strong>
+  <a href="{{url_for('index')}}">Here</a>
+</p>
+  
+{% endblock %}
