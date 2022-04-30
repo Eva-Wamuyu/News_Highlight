@@ -1,27 +1,27 @@
 from flask import render_template
 from app import news_app
-from .models import  news_article,news_source
-from .requests import request_funct,process_sources
+from .requests import request_funct,process_sources,return_articles,process_articles,search_using_source
 
 @news_app.route('/')
 def index():
   y = request_funct()
-  print(y)
   sources = process_sources(y)
 
-  return render_template("index.html",x=sources)
+  return render_template("index.html",x=sources,title="Muhtasari|Home")
 
-
-@news_app.route('/<source>')
-def source(source):
-  
-  return render_template("articles.html")
+site = "bbc-news"
+@news_app.route('/ssss')
+def source():
+  articles = return_articles(site)
+  them_articles = process_articles(articles)
+  print(them_articles)
+  return render_template("articles.html", articles=them_articles, title=f"Muhtasari|{site}", site="bbc-news")
 
 
 @news_app.route('/top-news/<source>')
 def query_results():
 
-  return render_template("top-headline.html")
+  return render_template("top-headline.html",title=f"Muhtasari|TopNews")
 
 @news_app.errorhandler(404)
 def error_404(e):

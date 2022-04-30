@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% for article in articles %}
+    <div class="col-md-4">
+      <div  class="img">
+        <img src="{{article.urlToImage}}" alt="{{article.title}}" width="300px">
+        <p> <small>
+          {{article.content}}
+          </small>
+        </p>
+      </div>
+      <p>
+        <span>
+          icon
+        </span>
+        {{article.publishedAt}}
+      </p>
+      <h3>
+        {{article.title}}
+      </h3>
+      <p>
+        {{article.description}}
+      </p>
+      <hr>
+      <p>
+        {{article.author}}
+      <span>
+        <a href="{{article.url}}" target="_blank">Read More</a>
+      </span>
+      </p>
+
+
+
+    </div>
+    {% endfor %}
+  </div>
+</div>
+  
+{% endblock %}

@@ -2,6 +2,7 @@ from hashlib import new
 import urllib3
 import json
 from .models.news_source import  News_Source
+from .models.news_article import News_Article
 from app import news_app
 
 
@@ -36,11 +37,34 @@ def process_sources(news_sources_results):
 
   return sources_as_arr
 
-  
 
- 
+def return_articles(source_name):
 
+  http = urllib3.PoolManager()
+  resp = http.request('GET','https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=bcff76712dd94a3fb38a235f73f5bc2d')
+  # resp = http.request('GET',b_url.format(source_name,"bcff76712dd94a3fb38a235f73f5bc2d" ))
+  articles = json.loads(resp.data.decode('utf-8'))
 
+  return articles
+
+def process_articles(articles):
+  articles_obj_arr = [articles["articles"]]
+  articles_arr = []
+  for index in range(len(articles_obj_arr)):
+      for item in articles_obj_arr[index]:
+        author = item["author"]
+        title = item["title"]
+        description = item["description"]
+        url = item["url"]
+        urlToImage = item["urlToImage"]
+        publishedAt = item["publishedAt"]
+        content = item["content"]
+
+        an_article = News_Article(author,title,description,url,urlToImage,publishedAt,content)
+        
+        articles_arr.append(an_article)
+
+  return articles_arr;
 
 def search_using_source(passed_source):
   http = urllib3.PoolManager()
@@ -50,9 +74,3 @@ def search_using_source(passed_source):
   news_articles = json.loads(resp.data.decode('utf-8'))
  
   return news_articles
-
-  return 
-
-def returnArticles():
-
-  return
