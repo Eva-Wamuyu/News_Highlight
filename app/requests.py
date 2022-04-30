@@ -1,6 +1,13 @@
+from hashlib import new
 import urllib3
 import json
-from models import  News_Article,News_Source
+from models import  news_source,news_article
+from main import news_app
+
+
+b_url = news_app.config['BASE_URL']
+search_url = news_app.config['SEARCH_URL']
+api_key = news_app.config['API_KEY']
 
 
 def request_funct():

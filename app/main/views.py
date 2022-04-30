@@ -1,6 +1,6 @@
 from flask import render_template
-from app import news_app
-from models import  News_Article,News_Source 
+from main import news_app
+from models import  news_article,news_source
 
 @news_app.route('/')
 def index():
@@ -14,11 +14,11 @@ def source(source):
   return render_template("articles.html")
 
 
-@news_app.route('/top-news/<>')
+@news_app.route('/top-news/<source>')
 def query_results():
 
   return render_template("top-headline.html")
 
-@news_app.error_handler(404)
+@news_app.errorhandler(404)
 def error_404(e):
   return render_template("404.html",title="Not Found"),404
