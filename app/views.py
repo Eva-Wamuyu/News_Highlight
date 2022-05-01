@@ -13,7 +13,7 @@ def index():
   
   get_source = request.args.get('search_source')
   if get_source:
-    return redirect(url_for('source',source_name=get_source))
+    return redirect(url_for('query_results',source_to_get=get_source))
   return render_template("index.html",x=sources,title="Muhtasari|Home",context="Vyanzo/Sources")
 
 
@@ -29,12 +29,12 @@ def source(source_name):
   return render_template("articles.html", articles=them_articles, title=f"Muhtasari|{site}", site=site, context="Makala/Articles")
 
 
-@news_app.route('/muhtasari/<source>',methods=['POST','GET'])
-def query_results(source):
-  form = SearchForm()
-  if form.validate_on_submit():
-    the_source = form.source_to_search.data
-    source(the_source)
+@news_app.route('/muhtasari/<source_to_get>',methods=['POST','GET'])
+def query_results(source_to_get):
+  
+  
+
+
   
   return index()
 
