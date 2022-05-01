@@ -1,6 +1,5 @@
 from flask import render_template, request, redirect,url_for
 from app import news_app
-from .forms import SearchForm
 from .requests import request_funct,process_sources,return_articles,process_articles
 
 
