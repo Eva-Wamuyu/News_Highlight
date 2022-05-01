@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
 {% block nav %}
-  <div></div>
+  <div class="text-center navs">
+    <h2 class="py-3">
+      MUHTASARI
+    </h2>
+    
+  </div>
+<hr>
 {% endblock %}
 
 {% block content %}
 
+<div class="container text-center">
 <h2>
   OOPS!
   <br>
@@ -13,9 +20,9 @@
 </h2>
 <p>
   <strong>
-    Don't worry, you can go home via the button below <br>
+    Don't worry, you can go home via the route below <br>
   </strong>
-  <a href="{{url_for('index')}}">Here</a>
+  <a class="btns btn" href="{{url_for('index')}}"> <i class="fa fa-home" aria-hidden="true"></i> Home</a>
 </p>
-  
+</div>
 {% endblock %}

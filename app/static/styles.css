@@ -16,17 +16,21 @@
 .img img{
   border-radius: 3px;
   width: 100%;
+  height: 186.3px
 }
 .header{
   background-color: #55DDE0;
 
 }
-.nav{
+.nav, .navs{
   background-color: #01FDF6;
   background-color: #257784;
   color: #FFFFFF;
   text-align: center;
 
+}
+.navs{
+  height: 12.5vh;
 }
 p{
   font-family: 'Times New Roman', Times, serif;

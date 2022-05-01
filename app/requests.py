@@ -64,11 +64,3 @@ def process_articles(articles):
 
   return articles_arr;
 
-def search_using_source(passed_source):
-  http = urllib3.PoolManager()
-
-  resp = http.request("GET", b_url.format(passed_source,"bcff76712dd94a3fb38a235f73f5bc2d"))
-
-  news_articles = json.loads(resp.data.decode('utf-8'))
- 
-  return news_articles

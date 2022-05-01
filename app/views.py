@@ -1,14 +1,20 @@
-from flask import render_template
-
+from flask import render_template, request, redirect,url_for
 from app import news_app
-from .requests import request_funct,process_sources,return_articles,process_articles,search_using_source
+from .forms import SearchForm
+from .requests import request_funct,process_sources,return_articles,process_articles
+
+
+
 
 @news_app.route('/')
 def index():
+  
   y = request_funct()
   sources = process_sources(y)
   
-
+  get_source = request.args.get('search_source')
+  if get_source:
+    return redirect(url_for('source',source_name=get_source))
   return render_template("index.html",x=sources,title="Muhtasari|Home",context="Vyanzo/Sources")
 
 
@@ -24,19 +30,18 @@ def source(source_name):
   return render_template("articles.html", articles=them_articles, title=f"Muhtasari|{site}", site=site, context="Makala/Articles")
 
 
-@news_app.route('/top-news/<source>')
-def query_results():
+@news_app.route('/muhtasari/<source>',methods=['POST','GET'])
+def query_results(source):
+  form = SearchForm()
+  if form.validate_on_submit():
+    the_source = form.source_to_search.data
+    source(the_source)
+  
+  return index()
 
-  return render_template("top-headline.html",title=f"Muhtasari|TopNews")
+
 
 @news_app.errorhandler(404)
 def error_404(e):
   return render_template("404.html",title="Not Found"),404
 
-def transform_string(s):
-  site_str = ""
-  for letter in s:
-    if letter == "":
-      site_str = site_str+ "-"
-    site_str = site_str + "bbbbb"
-  return site_str;
