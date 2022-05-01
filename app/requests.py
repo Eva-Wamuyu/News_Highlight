@@ -17,6 +17,7 @@ def request_funct():
 
   news_sources_results = json.loads(resp.data.decode('utf-8'))
  
+ 
   return news_sources_results
 
 def process_sources(news_sources_results):
@@ -43,6 +44,7 @@ def return_articles(source_name):
   resp = http.request('GET',search_url.format(source_name,api_key ))
   articles = json.loads(resp.data.decode('utf-8'))
 
+  
   return articles
 
 def process_articles(articles):

@@ -7,7 +7,6 @@ from .requests import request_funct,process_sources,return_articles,process_arti
 
 @news_app.route('/')
 def index():
-  
   y = request_funct()
   sources = process_sources(y)
   
@@ -29,7 +28,7 @@ def source(source_name):
   return render_template("articles.html", articles=them_articles, title=f"Muhtasari|{site}", site=site, context="Makala/Articles")
 
 
-@news_app.route('/muhtasari/<source_to_get>',methods=['POST','GET'])
+@news_app.route('/<source_to_get>',methods=['POST','GET'])
 def query_results(source_to_get):
   
   
