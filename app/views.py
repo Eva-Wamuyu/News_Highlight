@@ -16,7 +16,8 @@ def index():
 
 @news_app.route('/muhtasari/<source_name>')
 def source(source_name):
-  site = transform_string(source_name)
+  site = source_name.replace(" ","-")
+  source_name = site
   articles = return_articles(site)
   them_articles = process_articles(articles)
   print(them_articles)
@@ -36,6 +37,6 @@ def transform_string(s):
   site_str = ""
   for letter in s:
     if letter == "":
-      site_str = site_str+ "-";
-    site = site_str + letter;
+      site_str = site_str+ "-"
+    site_str = site_str + "bbbbb"
   return site_str;

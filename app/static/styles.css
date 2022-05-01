@@ -8,7 +8,7 @@
   background-color: #1A535C;
   color: #FFFFFF;
 }
-.btns:hover{
+.btns:hover, .btnz{
   background-color: #FFFFFF;
   border: solid 1px #1A535C;
   color: #1A535C;
