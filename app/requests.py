@@ -32,7 +32,7 @@ def process_sources(news_sources_results):
         url = item['url']
         category = item['category']
         country = item['country']
-        a_source = News_Source("",name,description,url,category,country)
+        a_source = News_Source(id,name,description,url,category,country)
         sources_as_arr.append(a_source)
 
   return sources_as_arr

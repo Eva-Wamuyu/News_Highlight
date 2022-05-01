@@ -21,7 +21,7 @@ def index():
 
 @news_app.route('/muhtasari/<source_name>')
 def source(source_name):
-  site = source_name.replace(" ","-")
+  site = source_name.replace(" ","-",)
   source_name = site
   articles = return_articles(site)
   if articles != "":
