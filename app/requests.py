@@ -7,13 +7,13 @@ News_Source = news_source.News_Source
 News_Article = news_article.News_Article
 b_url = news_app.config['BASE_URL']
 search_url = news_app.config['SEARCH_URL']
-# api_key = news_app.config['API_KEY']
+api_key = news_app.config['API_KEY']
 
 
 def request_funct():
   http = urllib3.PoolManager()
 
-  resp = http.request("GET", b_url.format("bcff76712dd94a3fb38a235f73f5bc2d"))
+  resp = http.request("GET", b_url.format(api_key))
 
   news_sources_results = json.loads(resp.data.decode('utf-8'))
  
@@ -40,7 +40,7 @@ def process_sources(news_sources_results):
 def return_articles(source_name):
 
   http = urllib3.PoolManager()
-  resp = http.request('GET',search_url.format(source_name,"bcff76712dd94a3fb38a235f73f5bc2d" ))
+  resp = http.request('GET',search_url.format(source_name,api_key ))
   articles = json.loads(resp.data.decode('utf-8'))
 
   return articles

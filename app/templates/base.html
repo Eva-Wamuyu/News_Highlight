@@ -10,20 +10,24 @@
   <title>{{title}}</title>
 </head>
 <body>
-  {% block navigation %}
-  <div class="container-fluid nav">
-    <h1>
+  {% block nav %}
+    
+  <div class="container-fluid text-center nav py-2">
+    <h1 class="m-auto w-75">
       Muhtasari wa Habari
     </h1>
-    <p>
-      <small>
-        Pata taarifa za Kenya na duniani pindi zinavyochipuka kutoka vyanzo vilivyoidhinishwa.
-      </small>
+
+    <p class="m-auto w-75">
+        Pata taarifa za dunia pindi zinavyochipuka kutoka vyanzo vilivyoidhinishwa.
     </p>
-    
-    
+    <br>
+    <h2 class="m-auto w-75 text-decoration-underline">
+    {{context}}
+    </h2>
+   
   </div>
   {% endblock %}
+ 
 
 
   {% block content %}
@@ -31,11 +35,16 @@
   {% endblock %}
 
 
-<footer>
- <div class="container">
 
+ <div class="container-fluid footer p-2">
+<p> 
+  Haki zote zimehifadhiwa
+</p>
+<p>
+  kwa hisani ya news
+</p>
  </div> 
-</footer>
+
   
 </body>
 </html>

@@ -1,3 +1,9 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  
+}
 .btns{
   background-color: #1A535C;
   color: #FFFFFF;
@@ -15,9 +21,28 @@
   background-color: #55DDE0;
 
 }
+.nav{
+  background-color: #01FDF6;
+  background-color: #257784;
+  color: #FFFFFF;
+  text-align: center;
+
+}
+p{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.footer{
+  background-color: #1A535C;
+  color: #FFFFFF;
+  text-align: center;
+}
 @media screen and (min-width:767px){
   .article-col{
     border-bottom: solid #1A535C 1px;
+  }
+  .nav{
+    height: 18.5vh;
   }
 
 }
