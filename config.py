@@ -1,4 +1,4 @@
-
+import os
 class Config:
 
   BASE_URL = "https://newsapi.org/v2/top-headlines/sources?language=en&&apiKey={}"
@@ -7,10 +7,15 @@ class Config:
   pass
 
 class DevConfig(Config):
-  pass
+  
 
-  DEBUG = 1
+  DEBUG = True
 
 
 class ProdConfig(Config):
   pass
+
+config_options = {
+'development':DevConfig,
+'production':ProdConfig
+}
