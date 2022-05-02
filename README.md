@@ -6,6 +6,7 @@
 A web application that displays news sources from which a user can make a selection and get to see articles from the selected source and a redirection to the original source.
 ## Live Link
 Click on this link to access the live site.
+https://taarifa-upesi.herokuapp.com/
 
 ## Technologies
 

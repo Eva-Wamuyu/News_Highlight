@@ -1,6 +1,10 @@
 import unittest
-from news_source import News_Source
-from news_article import News_Article
+from models import News_Source,News_Article
+
+
+
+# from news_source import News_Source
+# from news_article import News_Article
 
 
 class Source_Test(unittest.TestCase):
@@ -51,5 +55,5 @@ class Article_Test(unittest.TestCase):
     self.assertEqual(self.new_article.content, "content")
   
 
-if __name__ == "__main__":
-  unittest.main()
+
+  

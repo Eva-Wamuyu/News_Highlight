@@ -1,25 +1,34 @@
 import urllib3
 import json
-from .models import  news_source, news_article
-from app import news_app
 
-News_Source = news_source.News_Source
-News_Article = news_article.News_Article
-b_url = news_app.config['BASE_URL']
-search_url = news_app.config['SEARCH_URL']
-api_key = news_app.config['API_KEY']
+
+from .models import  News_Source,News_Article
+
+b_url = "https://newsapi.org/v2/top-headlines/sources?language=en&&apiKey={}"
+search_url = "https://newsapi.org/v2/everything?sources={}&apiKey={}"
+api_key = "31ddf62c21a54f238347cd1b02d42b2a"
+
+def config_request(news_app):
+  global api_key
+  # b_url = news_app.config['BASE_URL']
+  # search_url = news_app.config['SEARCH_URL']
+  # api_key = news_app.config['API_KEY']
+
 
 
 def request_funct():
   http = urllib3.PoolManager()
-
+  
+  results = ""
   resp = http.request("GET", b_url.format(api_key))
 
   news_sources_results = json.loads(resp.data.decode('utf-8'))
- 
- 
-  return news_sources_results
-
+  
+  if news_sources_results['status'] == "ok":
+   results = process_sources(news_sources_results)
+  return results
+  
+  
 def process_sources(news_sources_results):
   sources_obj_arr = [news_sources_results['sources']]
 
@@ -39,17 +48,17 @@ def process_sources(news_sources_results):
 
 
 def return_articles(source_name):
-  
+  results = ""
   http = urllib3.PoolManager()
   resp = http.request('GET',search_url.format(source_name,api_key ))
   articles = json.loads(resp.data.decode('utf-8'))
-  results = ""
+  
   if articles['status'] == "ok":
    return process_articles(articles)
   return results
 
-def process_articles(articles):
-  articles_obj_arr = [articles["articles"]]
+def process_articles(articlez):
+  articles_obj_arr = [articlez['articles']]
   articles_arr = []
   for index in range(len(articles_obj_arr)):
       for item in articles_obj_arr[index]:
