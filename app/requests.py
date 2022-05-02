@@ -39,13 +39,14 @@ def process_sources(news_sources_results):
 
 
 def return_articles(source_name):
-
+  
   http = urllib3.PoolManager()
   resp = http.request('GET',search_url.format(source_name,api_key ))
   articles = json.loads(resp.data.decode('utf-8'))
-
-  
-  return articles
+  results = ""
+  if articles['status'] == "ok":
+   return process_articles(articles)
+  return results
 
 def process_articles(articles):
   articles_obj_arr = [articles["articles"]]
@@ -65,4 +66,6 @@ def process_articles(articles):
         articles_arr.append(an_article)
 
   return articles_arr;
+
+       
 

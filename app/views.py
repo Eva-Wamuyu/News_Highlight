@@ -23,10 +23,8 @@ def index():
 def source(source_name):
   site = source_name.replace(" ","-",)
   source_name = site
-  articles = return_articles(site)
-  if articles != "":
-      them_articles = process_articles(articles)
-      print(them_articles)
+  them_articles = return_articles(site)
+  if them_articles != "":
       return render_template("articles.html", articles=them_articles, title=f"Muhtasari|{site}", site=site, context="Makala/Articles")
   return redirect(url_for('index'))
 
