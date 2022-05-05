@@ -1,5 +1,5 @@
 import unittest
-from models import News_Source,News_Article
+from app.models import News_Source,News_Article
 
 
 

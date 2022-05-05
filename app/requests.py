@@ -1,19 +1,18 @@
 import urllib3
 import json
-
-
 from .models import  News_Source,News_Article
 
-b_url = "https://newsapi.org/v2/top-headlines/sources?language=en&&apiKey={}"
-search_url = "https://newsapi.org/v2/everything?sources={}&apiKey={}"
+b_url = None
+search_url =  None
 api_key = None
 
 def config_request(news_app):
-  global api_key
-  # b_url = news_app.config['BASE_URL']
-  # search_url = news_app.config['SEARCH_URL']
-  api_key = news_app.config['API_KEY']
-
+  global api_key,b_url,search_url
+  b_url = news_app.config['BASE_URL']
+  search_url = news_app.config['SEARCH_URL']
+  api_key = news_app.config.get('API_KEY')
+  
+  
 
 
 def request_funct():
